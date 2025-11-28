@@ -1,27 +1,46 @@
+"use client"
+import { useEffect, useState } from "react";
+import ProductCard from "../ProductCard/ProductCard";
+
 export default function LandingPage() {
-  const products = [
-    {
-      id: 1,
-      name: "AeroBuds Pro Wireless Earbuds",
-      price: "$129",
-      img: "https://images.unsplash.com/photo-1590650046871-92c887180603?q=80",
-      desc: "Active noise cancellation, 32-hour battery life, crystal clear audio.",
-    },
-    {
-      id: 2,
-      name: "NovaX Smartwatch Series 7",
-      price: "$199",
-      img: "https://images.unsplash.com/photo-1603791445824-0050bd436b47?q=80",
-      desc: "Heart-rate AI, sleep monitor, GPS, 5-day battery for active lifestyles.",
-    },
-    {
-      id: 3,
-      name: "Lumeo RGB Mechanical Keyboard",
-      price: "$89",
-      img: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?q=80",
-      desc: "Hot-swappable keys, silent red switches, fully customizable RGB.",
-    },
-  ];
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch("https://imex-port.vercel.app/products?limit=6");
+        const data = await res.json();
+        setProducts(data.slice(0, 6)); // ensure only 6 products
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+  // const products = [
+  //   {
+  //     id: 1,
+  //     name: "AeroBuds Pro Wireless Earbuds",
+  //     price: "$129",
+  //     img: "https://images.unsplash.com/photo-1590650046871-92c887180603?q=80",
+  //     desc: "Active noise cancellation, 32-hour battery life, crystal clear audio.",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "NovaX Smartwatch Series 7",
+  //     price: "$199",
+  //     img: "https://images.unsplash.com/photo-1603791445824-0050bd436b47?q=80",
+  //     desc: "Heart-rate AI, sleep monitor, GPS, 5-day battery for active lifestyles.",
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Lumeo RGB Mechanical Keyboard",
+  //     price: "$89",
+  //     img: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?q=80",
+  //     desc: "Hot-swappable keys, silent red switches, fully customizable RGB.",
+  //   },
+  // ];
 
   const testimonials = [
     {
@@ -107,37 +126,18 @@ export default function LandingPage() {
 
       {/* PRODUCT SECTION */}
       <section className="py-20 bg-base-100">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Top Selling Products
-          </h2>
+  <div className="max-w-6xl mx-auto px-4">
+    <h2 className="text-3xl font-bold text-center mb-12">
+      Top Selling Products
+    </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {products.map((p) => (
-              <div
-                key={p.id}
-                className="card bg-white shadow hover:shadow-xl transition"
-              >
-                <figure>
-                  <img
-                    src={p.img}
-                    alt={p.name}
-                    className="w-full object-cover h-64"
-                  />
-                </figure>
-                <div className="card-body text-gray-700">
-                  <h3 className="card-title">{p.name}</h3>
-                  <p>{p.desc}</p>
-                  <p className="font-bold text-xl">{p.price}</p>
-                  <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Buy Now</button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+      {products.map((product) => (
+        <ProductCard key={product._id} product={product} />
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* TESTIMONIALS */}
       <section className="py-20 bg-base-200">

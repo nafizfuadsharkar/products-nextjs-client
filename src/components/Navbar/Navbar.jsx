@@ -97,7 +97,7 @@ export default function Navbar() {
           </ul>{" "}
         </div>{" "}
         <Link href="/" className="btn btn-ghost text-xl">
-          DaisyUI{" "}
+          ProDuct{" "}
         </Link>{" "}
       </div>
       {/* Navbar Center */}
