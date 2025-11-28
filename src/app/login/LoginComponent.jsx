@@ -47,10 +47,12 @@ const Login = () => {
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then(() => {
+        toast.success("Logged in Successfully!");
         router.push(from);
       })
       .catch((err) => {
         setError(err.code);
+        toast.success("Logg in Failed!");
       });
   };
 
