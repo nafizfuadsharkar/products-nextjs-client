@@ -82,11 +82,11 @@ export default function Navbar() {
                 </li>{" "}
                 <li>
                   {" "}
-                  <Link href="/add-product">Add Product</Link>{" "}
+                  <Link href="/add-product">addProduct</Link>{" "}
                 </li>{" "}
                 <li>
                   {" "}
-                  <Link href="/manage-products">Manage Products</Link>{" "}
+                  <Link href="/manageProducts">Manage Products</Link>{" "}
                 </li>{" "}
                 <li>
                   {" "}
@@ -133,10 +133,10 @@ export default function Navbar() {
                   className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
                 >
                   <li>
-                    <Link href="/add-product">Add Product</Link>
+                    <Link href="/addProduct">Add Product</Link>
                   </li>
                   <li>
-                    <Link href="/manage-products">Manage Products</Link>
+                    <Link href="/manageProducts">Manage Products</Link>
                   </li>
                   <li>
                     <button onClick={handleLogout}>Logout</button>

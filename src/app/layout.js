@@ -1,4 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 import "./globals.css";
 import SessionWrapper from "./SessionWrapper/SessionWrapper";
 import Navbar from "@/components/Navbar/Navbar";
@@ -30,6 +32,17 @@ export default function RootLayout({ children }) {
           <Navbar></Navbar>
           {children}
           <Footer></Footer>
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
         </body>
       </AuthProvider>
     </html>
